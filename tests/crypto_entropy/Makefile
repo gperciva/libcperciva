@@ -22,27 +22,27 @@ ${PROG}:${SRCS:.c=.o}
 	${CC} -o ${PROG} ${SRCS:.c=.o} ${LDFLAGS} ${LDADD_EXTRA} ${LDADD_REQ} ${LDADD_POSIX}
 
 main.o: main.c ../../util/warnp.h ../../crypto/crypto_entropy.h
-	${CC} ${CFLAGS_POSIX} -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=700 -DCPUSUPPORT_CONFIG_FILE=\"cpusupport-config.h\"  -I../.. ${IDIRS} ${CPPFLAGS} ${CFLAGS} -c main.c -o main.o
+	${CC} ${CFLAGS_POSIX} -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=700 -DCPUSUPPORT_CONFIG_FILE=\"cpusupport-config.h\" -DAPISUPPORT_CONFIG_FILE=\"apisupport-config.h\"  -I../.. ${IDIRS} ${CPPFLAGS} ${CFLAGS} -c main.c -o main.o
 sha256.o: ../../alg/sha256.c ../../cpusupport/cpusupport.h ../../cpusupport-config.h ../../util/insecure_memzero.h ../../alg/sha256_shani.h ../../util/sysendian.h ../../util/warnp.h ../../alg/sha256.h
-	${CC} ${CFLAGS_POSIX} -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=700 -DCPUSUPPORT_CONFIG_FILE=\"cpusupport-config.h\"  -I../.. ${IDIRS} ${CPPFLAGS} ${CFLAGS} -c ../../alg/sha256.c -o sha256.o
+	${CC} ${CFLAGS_POSIX} -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=700 -DCPUSUPPORT_CONFIG_FILE=\"cpusupport-config.h\" -DAPISUPPORT_CONFIG_FILE=\"apisupport-config.h\"  -I../.. ${IDIRS} ${CPPFLAGS} ${CFLAGS} -c ../../alg/sha256.c -o sha256.o
 sha256_shani.o: ../../alg/sha256_shani.c ../../cpusupport/cpusupport.h ../../cpusupport-config.h
-	${CC} ${CFLAGS_POSIX} -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=700 -DCPUSUPPORT_CONFIG_FILE=\"cpusupport-config.h\" ${CFLAGS_X86_SHANI} ${CFLAGS_X86_SSSE3} -I../.. ${IDIRS} ${CPPFLAGS} ${CFLAGS} -c ../../alg/sha256_shani.c -o sha256_shani.o
+	${CC} ${CFLAGS_POSIX} -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=700 -DCPUSUPPORT_CONFIG_FILE=\"cpusupport-config.h\" -DAPISUPPORT_CONFIG_FILE=\"apisupport-config.h\" ${CFLAGS_X86_SHANI} ${CFLAGS_X86_SSSE3} -I../.. ${IDIRS} ${CPPFLAGS} ${CFLAGS} -c ../../alg/sha256_shani.c -o sha256_shani.o
 cpusupport_x86_rdrand.o: ../../cpusupport/cpusupport_x86_rdrand.c ../../cpusupport/cpusupport.h ../../cpusupport-config.h
-	${CC} ${CFLAGS_POSIX} -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=700 -DCPUSUPPORT_CONFIG_FILE=\"cpusupport-config.h\"  -I../.. ${IDIRS} ${CPPFLAGS} ${CFLAGS} -c ../../cpusupport/cpusupport_x86_rdrand.c -o cpusupport_x86_rdrand.o
+	${CC} ${CFLAGS_POSIX} -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=700 -DCPUSUPPORT_CONFIG_FILE=\"cpusupport-config.h\" -DAPISUPPORT_CONFIG_FILE=\"apisupport-config.h\"  -I../.. ${IDIRS} ${CPPFLAGS} ${CFLAGS} -c ../../cpusupport/cpusupport_x86_rdrand.c -o cpusupport_x86_rdrand.o
 cpusupport_x86_shani.o: ../../cpusupport/cpusupport_x86_shani.c ../../cpusupport/cpusupport.h ../../cpusupport-config.h
-	${CC} ${CFLAGS_POSIX} -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=700 -DCPUSUPPORT_CONFIG_FILE=\"cpusupport-config.h\"  -I../.. ${IDIRS} ${CPPFLAGS} ${CFLAGS} -c ../../cpusupport/cpusupport_x86_shani.c -o cpusupport_x86_shani.o
+	${CC} ${CFLAGS_POSIX} -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=700 -DCPUSUPPORT_CONFIG_FILE=\"cpusupport-config.h\" -DAPISUPPORT_CONFIG_FILE=\"apisupport-config.h\"  -I../.. ${IDIRS} ${CPPFLAGS} ${CFLAGS} -c ../../cpusupport/cpusupport_x86_shani.c -o cpusupport_x86_shani.o
 cpusupport_x86_ssse3.o: ../../cpusupport/cpusupport_x86_ssse3.c ../../cpusupport/cpusupport.h ../../cpusupport-config.h
-	${CC} ${CFLAGS_POSIX} -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=700 -DCPUSUPPORT_CONFIG_FILE=\"cpusupport-config.h\"  -I../.. ${IDIRS} ${CPPFLAGS} ${CFLAGS} -c ../../cpusupport/cpusupport_x86_ssse3.c -o cpusupport_x86_ssse3.o
+	${CC} ${CFLAGS_POSIX} -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=700 -DCPUSUPPORT_CONFIG_FILE=\"cpusupport-config.h\" -DAPISUPPORT_CONFIG_FILE=\"apisupport-config.h\"  -I../.. ${IDIRS} ${CPPFLAGS} ${CFLAGS} -c ../../cpusupport/cpusupport_x86_ssse3.c -o cpusupport_x86_ssse3.o
 crypto_entropy.o: ../../crypto/crypto_entropy.c ../../cpusupport/cpusupport.h ../../cpusupport-config.h ../../crypto/crypto_entropy_rdrand.h ../../util/entropy.h ../../util/insecure_memzero.h ../../alg/sha256.h ../../crypto/crypto_entropy.h
-	${CC} ${CFLAGS_POSIX} -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=700 -DCPUSUPPORT_CONFIG_FILE=\"cpusupport-config.h\"  -I../.. ${IDIRS} ${CPPFLAGS} ${CFLAGS} -c ../../crypto/crypto_entropy.c -o crypto_entropy.o
+	${CC} ${CFLAGS_POSIX} -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=700 -DCPUSUPPORT_CONFIG_FILE=\"cpusupport-config.h\" -DAPISUPPORT_CONFIG_FILE=\"apisupport-config.h\"  -I../.. ${IDIRS} ${CPPFLAGS} ${CFLAGS} -c ../../crypto/crypto_entropy.c -o crypto_entropy.o
 crypto_entropy_rdrand.o: ../../crypto/crypto_entropy_rdrand.c ../../cpusupport/cpusupport.h ../../cpusupport-config.h
-	${CC} ${CFLAGS_POSIX} -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=700 -DCPUSUPPORT_CONFIG_FILE=\"cpusupport-config.h\" ${CFLAGS_X86_RDRAND} -I../.. ${IDIRS} ${CPPFLAGS} ${CFLAGS} -c ../../crypto/crypto_entropy_rdrand.c -o crypto_entropy_rdrand.o
+	${CC} ${CFLAGS_POSIX} -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=700 -DCPUSUPPORT_CONFIG_FILE=\"cpusupport-config.h\" -DAPISUPPORT_CONFIG_FILE=\"apisupport-config.h\" ${CFLAGS_X86_RDRAND} -I../.. ${IDIRS} ${CPPFLAGS} ${CFLAGS} -c ../../crypto/crypto_entropy_rdrand.c -o crypto_entropy_rdrand.o
 entropy.o: ../../util/entropy.c ../../util/warnp.h ../../util/entropy.h
-	${CC} ${CFLAGS_POSIX} -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=700 -DCPUSUPPORT_CONFIG_FILE=\"cpusupport-config.h\"  -I../.. ${IDIRS} ${CPPFLAGS} ${CFLAGS} -c ../../util/entropy.c -o entropy.o
+	${CC} ${CFLAGS_POSIX} -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=700 -DCPUSUPPORT_CONFIG_FILE=\"cpusupport-config.h\" -DAPISUPPORT_CONFIG_FILE=\"apisupport-config.h\"  -I../.. ${IDIRS} ${CPPFLAGS} ${CFLAGS} -c ../../util/entropy.c -o entropy.o
 insecure_memzero.o: ../../util/insecure_memzero.c ../../util/insecure_memzero.h
-	${CC} ${CFLAGS_POSIX} -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=700 -DCPUSUPPORT_CONFIG_FILE=\"cpusupport-config.h\"  -I../.. ${IDIRS} ${CPPFLAGS} ${CFLAGS} -c ../../util/insecure_memzero.c -o insecure_memzero.o
+	${CC} ${CFLAGS_POSIX} -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=700 -DCPUSUPPORT_CONFIG_FILE=\"cpusupport-config.h\" -DAPISUPPORT_CONFIG_FILE=\"apisupport-config.h\"  -I../.. ${IDIRS} ${CPPFLAGS} ${CFLAGS} -c ../../util/insecure_memzero.c -o insecure_memzero.o
 warnp.o: ../../util/warnp.c ../../util/warnp.h
-	${CC} ${CFLAGS_POSIX} -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=700 -DCPUSUPPORT_CONFIG_FILE=\"cpusupport-config.h\"  -I../.. ${IDIRS} ${CPPFLAGS} ${CFLAGS} -c ../../util/warnp.c -o warnp.o
+	${CC} ${CFLAGS_POSIX} -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=700 -DCPUSUPPORT_CONFIG_FILE=\"cpusupport-config.h\" -DAPISUPPORT_CONFIG_FILE=\"apisupport-config.h\"  -I../.. ${IDIRS} ${CPPFLAGS} ${CFLAGS} -c ../../util/warnp.c -o warnp.o
 
 test:	test_crypto_entropy
 	@./test_crypto_entropy

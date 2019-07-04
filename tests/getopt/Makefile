@@ -22,9 +22,9 @@ ${PROG}:${SRCS:.c=.o}
 	${CC} -o ${PROG} ${SRCS:.c=.o} ${LDFLAGS} ${LDADD_EXTRA} ${LDADD_REQ} ${LDADD_POSIX}
 
 main.o: main.c ../../util/getopt.h
-	${CC} ${CFLAGS_POSIX} -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=700 -DCPUSUPPORT_CONFIG_FILE=\"cpusupport-config.h\"  -I../.. ${IDIRS} ${CPPFLAGS} ${CFLAGS} -c main.c -o main.o
+	${CC} ${CFLAGS_POSIX} -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=700 -DCPUSUPPORT_CONFIG_FILE=\"cpusupport-config.h\" -DAPISUPPORT_CONFIG_FILE=\"apisupport-config.h\"  -I../.. ${IDIRS} ${CPPFLAGS} ${CFLAGS} -c main.c -o main.o
 getopt.o: ../../util/getopt.c ../../util/getopt.h
-	${CC} ${CFLAGS_POSIX} -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=700 -DCPUSUPPORT_CONFIG_FILE=\"cpusupport-config.h\"  -I../.. ${IDIRS} ${CPPFLAGS} ${CFLAGS} -c ../../util/getopt.c -o getopt.o
+	${CC} ${CFLAGS_POSIX} -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=700 -DCPUSUPPORT_CONFIG_FILE=\"cpusupport-config.h\" -DAPISUPPORT_CONFIG_FILE=\"apisupport-config.h\"  -I../.. ${IDIRS} ${CPPFLAGS} ${CFLAGS} -c ../../util/getopt.c -o getopt.o
 
 test:	test_getopt
 	./test_getopt.sh

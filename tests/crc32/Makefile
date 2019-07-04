@@ -22,19 +22,19 @@ ${PROG}:${SRCS:.c=.o}
 	${CC} -o ${PROG} ${SRCS:.c=.o} ${LDFLAGS} ${LDADD_EXTRA} ${LDADD_REQ} ${LDADD_POSIX}
 
 main.o: main.c ../../cpusupport/cpusupport.h ../../cpusupport-config.h ../../util/getopt.h ../../util/monoclock.h ../../util/warnp.h ../../alg/crc32c.h
-	${CC} ${CFLAGS_POSIX} -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=700 -DCPUSUPPORT_CONFIG_FILE=\"cpusupport-config.h\"  -I../.. ${IDIRS} ${CPPFLAGS} ${CFLAGS} -c main.c -o main.o
+	${CC} ${CFLAGS_POSIX} -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=700 -DCPUSUPPORT_CONFIG_FILE=\"cpusupport-config.h\" -DAPISUPPORT_CONFIG_FILE=\"apisupport-config.h\"  -I../.. ${IDIRS} ${CPPFLAGS} ${CFLAGS} -c main.c -o main.o
 crc32c.o: ../../alg/crc32c.c ../../cpusupport/cpusupport.h ../../cpusupport-config.h ../../alg/crc32c_sse42.h ../../util/warnp.h ../../alg/crc32c.h
-	${CC} ${CFLAGS_POSIX} -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=700 -DCPUSUPPORT_CONFIG_FILE=\"cpusupport-config.h\"  -I../.. ${IDIRS} ${CPPFLAGS} ${CFLAGS} -c ../../alg/crc32c.c -o crc32c.o
+	${CC} ${CFLAGS_POSIX} -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=700 -DCPUSUPPORT_CONFIG_FILE=\"cpusupport-config.h\" -DAPISUPPORT_CONFIG_FILE=\"apisupport-config.h\"  -I../.. ${IDIRS} ${CPPFLAGS} ${CFLAGS} -c ../../alg/crc32c.c -o crc32c.o
 crc32c_sse42.o: ../../alg/crc32c_sse42.c ../../cpusupport/cpusupport.h ../../cpusupport-config.h
-	${CC} ${CFLAGS_POSIX} -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=700 -DCPUSUPPORT_CONFIG_FILE=\"cpusupport-config.h\" ${CFLAGS_X86_CRC32} -I../.. ${IDIRS} ${CPPFLAGS} ${CFLAGS} -c ../../alg/crc32c_sse42.c -o crc32c_sse42.o
+	${CC} ${CFLAGS_POSIX} -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=700 -DCPUSUPPORT_CONFIG_FILE=\"cpusupport-config.h\" -DAPISUPPORT_CONFIG_FILE=\"apisupport-config.h\" ${CFLAGS_X86_CRC32} -I../.. ${IDIRS} ${CPPFLAGS} ${CFLAGS} -c ../../alg/crc32c_sse42.c -o crc32c_sse42.o
 cpusupport_x86_crc32.o: ../../cpusupport/cpusupport_x86_crc32.c ../../cpusupport/cpusupport.h ../../cpusupport-config.h
-	${CC} ${CFLAGS_POSIX} -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=700 -DCPUSUPPORT_CONFIG_FILE=\"cpusupport-config.h\"  -I../.. ${IDIRS} ${CPPFLAGS} ${CFLAGS} -c ../../cpusupport/cpusupport_x86_crc32.c -o cpusupport_x86_crc32.o
+	${CC} ${CFLAGS_POSIX} -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=700 -DCPUSUPPORT_CONFIG_FILE=\"cpusupport-config.h\" -DAPISUPPORT_CONFIG_FILE=\"apisupport-config.h\"  -I../.. ${IDIRS} ${CPPFLAGS} ${CFLAGS} -c ../../cpusupport/cpusupport_x86_crc32.c -o cpusupport_x86_crc32.o
 getopt.o: ../../util/getopt.c ../../util/getopt.h
-	${CC} ${CFLAGS_POSIX} -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=700 -DCPUSUPPORT_CONFIG_FILE=\"cpusupport-config.h\"  -I../.. ${IDIRS} ${CPPFLAGS} ${CFLAGS} -c ../../util/getopt.c -o getopt.o
+	${CC} ${CFLAGS_POSIX} -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=700 -DCPUSUPPORT_CONFIG_FILE=\"cpusupport-config.h\" -DAPISUPPORT_CONFIG_FILE=\"apisupport-config.h\"  -I../.. ${IDIRS} ${CPPFLAGS} ${CFLAGS} -c ../../util/getopt.c -o getopt.o
 monoclock.o: ../../util/monoclock.c ../../util/warnp.h ../../util/monoclock.h
-	${CC} ${CFLAGS_POSIX} -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=700 -DCPUSUPPORT_CONFIG_FILE=\"cpusupport-config.h\"  -I../.. ${IDIRS} ${CPPFLAGS} ${CFLAGS} -c ../../util/monoclock.c -o monoclock.o
+	${CC} ${CFLAGS_POSIX} -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=700 -DCPUSUPPORT_CONFIG_FILE=\"cpusupport-config.h\" -DAPISUPPORT_CONFIG_FILE=\"apisupport-config.h\"  -I../.. ${IDIRS} ${CPPFLAGS} ${CFLAGS} -c ../../util/monoclock.c -o monoclock.o
 warnp.o: ../../util/warnp.c ../../util/warnp.h
-	${CC} ${CFLAGS_POSIX} -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=700 -DCPUSUPPORT_CONFIG_FILE=\"cpusupport-config.h\"  -I../.. ${IDIRS} ${CPPFLAGS} ${CFLAGS} -c ../../util/warnp.c -o warnp.o
+	${CC} ${CFLAGS_POSIX} -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=700 -DCPUSUPPORT_CONFIG_FILE=\"cpusupport-config.h\" -DAPISUPPORT_CONFIG_FILE=\"apisupport-config.h\"  -I../.. ${IDIRS} ${CPPFLAGS} ${CFLAGS} -c ../../util/warnp.c -o warnp.o
 
 test:	test_crc32
 	./test_crc32 -x

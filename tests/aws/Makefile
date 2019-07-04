@@ -22,27 +22,27 @@ ${PROG}:${SRCS:.c=.o}
 	${CC} -o ${PROG} ${SRCS:.c=.o} ${LDFLAGS} ${LDADD_EXTRA} ${LDADD_REQ} ${LDADD_POSIX}
 
 main.o: main.c ../../util/warnp.h ../../aws/aws_readkeys.h ../../aws/aws_sign.h
-	${CC} ${CFLAGS_POSIX} -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=700 -DCPUSUPPORT_CONFIG_FILE=\"cpusupport-config.h\"  -I../.. ${IDIRS} ${CPPFLAGS} ${CFLAGS} -c main.c -o main.o
+	${CC} ${CFLAGS_POSIX} -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=700 -DCPUSUPPORT_CONFIG_FILE=\"cpusupport-config.h\" -DAPISUPPORT_CONFIG_FILE=\"apisupport-config.h\"  -I../.. ${IDIRS} ${CPPFLAGS} ${CFLAGS} -c main.c -o main.o
 sha256.o: ../../alg/sha256.c ../../cpusupport/cpusupport.h ../../cpusupport-config.h ../../util/insecure_memzero.h ../../alg/sha256_shani.h ../../util/sysendian.h ../../util/warnp.h ../../alg/sha256.h
-	${CC} ${CFLAGS_POSIX} -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=700 -DCPUSUPPORT_CONFIG_FILE=\"cpusupport-config.h\"  -I../.. ${IDIRS} ${CPPFLAGS} ${CFLAGS} -c ../../alg/sha256.c -o sha256.o
+	${CC} ${CFLAGS_POSIX} -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=700 -DCPUSUPPORT_CONFIG_FILE=\"cpusupport-config.h\" -DAPISUPPORT_CONFIG_FILE=\"apisupport-config.h\"  -I../.. ${IDIRS} ${CPPFLAGS} ${CFLAGS} -c ../../alg/sha256.c -o sha256.o
 sha256_shani.o: ../../alg/sha256_shani.c ../../cpusupport/cpusupport.h ../../cpusupport-config.h
-	${CC} ${CFLAGS_POSIX} -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=700 -DCPUSUPPORT_CONFIG_FILE=\"cpusupport-config.h\" ${CFLAGS_X86_SHANI} ${CFLAGS_X86_SSSE3} -I../.. ${IDIRS} ${CPPFLAGS} ${CFLAGS} -c ../../alg/sha256_shani.c -o sha256_shani.o
+	${CC} ${CFLAGS_POSIX} -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=700 -DCPUSUPPORT_CONFIG_FILE=\"cpusupport-config.h\" -DAPISUPPORT_CONFIG_FILE=\"apisupport-config.h\" ${CFLAGS_X86_SHANI} ${CFLAGS_X86_SSSE3} -I../.. ${IDIRS} ${CPPFLAGS} ${CFLAGS} -c ../../alg/sha256_shani.c -o sha256_shani.o
 aws_readkeys.o: ../../aws/aws_readkeys.c ../../util/insecure_memzero.h ../../util/warnp.h ../../aws/aws_readkeys.h
-	${CC} ${CFLAGS_POSIX} -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=700 -DCPUSUPPORT_CONFIG_FILE=\"cpusupport-config.h\"  -I../.. ${IDIRS} ${CPPFLAGS} ${CFLAGS} -c ../../aws/aws_readkeys.c -o aws_readkeys.o
+	${CC} ${CFLAGS_POSIX} -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=700 -DCPUSUPPORT_CONFIG_FILE=\"cpusupport-config.h\" -DAPISUPPORT_CONFIG_FILE=\"apisupport-config.h\"  -I../.. ${IDIRS} ${CPPFLAGS} ${CFLAGS} -c ../../aws/aws_readkeys.c -o aws_readkeys.o
 aws_sign.o: ../../aws/aws_sign.c ../../util/asprintf.h ../../util/hexify.h ../../alg/sha256.h ../../util/warnp.h ../../aws/aws_sign.h
-	${CC} ${CFLAGS_POSIX} -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=700 -DCPUSUPPORT_CONFIG_FILE=\"cpusupport-config.h\"  -I../.. ${IDIRS} ${CPPFLAGS} ${CFLAGS} -c ../../aws/aws_sign.c -o aws_sign.o
+	${CC} ${CFLAGS_POSIX} -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=700 -DCPUSUPPORT_CONFIG_FILE=\"cpusupport-config.h\" -DAPISUPPORT_CONFIG_FILE=\"apisupport-config.h\"  -I../.. ${IDIRS} ${CPPFLAGS} ${CFLAGS} -c ../../aws/aws_sign.c -o aws_sign.o
 cpusupport_x86_shani.o: ../../cpusupport/cpusupport_x86_shani.c ../../cpusupport/cpusupport.h ../../cpusupport-config.h
-	${CC} ${CFLAGS_POSIX} -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=700 -DCPUSUPPORT_CONFIG_FILE=\"cpusupport-config.h\"  -I../.. ${IDIRS} ${CPPFLAGS} ${CFLAGS} -c ../../cpusupport/cpusupport_x86_shani.c -o cpusupport_x86_shani.o
+	${CC} ${CFLAGS_POSIX} -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=700 -DCPUSUPPORT_CONFIG_FILE=\"cpusupport-config.h\" -DAPISUPPORT_CONFIG_FILE=\"apisupport-config.h\"  -I../.. ${IDIRS} ${CPPFLAGS} ${CFLAGS} -c ../../cpusupport/cpusupport_x86_shani.c -o cpusupport_x86_shani.o
 cpusupport_x86_ssse3.o: ../../cpusupport/cpusupport_x86_ssse3.c ../../cpusupport/cpusupport.h ../../cpusupport-config.h
-	${CC} ${CFLAGS_POSIX} -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=700 -DCPUSUPPORT_CONFIG_FILE=\"cpusupport-config.h\"  -I../.. ${IDIRS} ${CPPFLAGS} ${CFLAGS} -c ../../cpusupport/cpusupport_x86_ssse3.c -o cpusupport_x86_ssse3.o
+	${CC} ${CFLAGS_POSIX} -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=700 -DCPUSUPPORT_CONFIG_FILE=\"cpusupport-config.h\" -DAPISUPPORT_CONFIG_FILE=\"apisupport-config.h\"  -I../.. ${IDIRS} ${CPPFLAGS} ${CFLAGS} -c ../../cpusupport/cpusupport_x86_ssse3.c -o cpusupport_x86_ssse3.o
 asprintf.o: ../../util/asprintf.c ../../util/asprintf.h
-	${CC} ${CFLAGS_POSIX} -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=700 -DCPUSUPPORT_CONFIG_FILE=\"cpusupport-config.h\"  -I../.. ${IDIRS} ${CPPFLAGS} ${CFLAGS} -c ../../util/asprintf.c -o asprintf.o
+	${CC} ${CFLAGS_POSIX} -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=700 -DCPUSUPPORT_CONFIG_FILE=\"cpusupport-config.h\" -DAPISUPPORT_CONFIG_FILE=\"apisupport-config.h\"  -I../.. ${IDIRS} ${CPPFLAGS} ${CFLAGS} -c ../../util/asprintf.c -o asprintf.o
 hexify.o: ../../util/hexify.c ../../util/hexify.h
-	${CC} ${CFLAGS_POSIX} -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=700 -DCPUSUPPORT_CONFIG_FILE=\"cpusupport-config.h\"  -I../.. ${IDIRS} ${CPPFLAGS} ${CFLAGS} -c ../../util/hexify.c -o hexify.o
+	${CC} ${CFLAGS_POSIX} -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=700 -DCPUSUPPORT_CONFIG_FILE=\"cpusupport-config.h\" -DAPISUPPORT_CONFIG_FILE=\"apisupport-config.h\"  -I../.. ${IDIRS} ${CPPFLAGS} ${CFLAGS} -c ../../util/hexify.c -o hexify.o
 insecure_memzero.o: ../../util/insecure_memzero.c ../../util/insecure_memzero.h
-	${CC} ${CFLAGS_POSIX} -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=700 -DCPUSUPPORT_CONFIG_FILE=\"cpusupport-config.h\"  -I../.. ${IDIRS} ${CPPFLAGS} ${CFLAGS} -c ../../util/insecure_memzero.c -o insecure_memzero.o
+	${CC} ${CFLAGS_POSIX} -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=700 -DCPUSUPPORT_CONFIG_FILE=\"cpusupport-config.h\" -DAPISUPPORT_CONFIG_FILE=\"apisupport-config.h\"  -I../.. ${IDIRS} ${CPPFLAGS} ${CFLAGS} -c ../../util/insecure_memzero.c -o insecure_memzero.o
 warnp.o: ../../util/warnp.c ../../util/warnp.h
-	${CC} ${CFLAGS_POSIX} -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=700 -DCPUSUPPORT_CONFIG_FILE=\"cpusupport-config.h\"  -I../.. ${IDIRS} ${CPPFLAGS} ${CFLAGS} -c ../../util/warnp.c -o warnp.o
+	${CC} ${CFLAGS_POSIX} -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=700 -DCPUSUPPORT_CONFIG_FILE=\"cpusupport-config.h\" -DAPISUPPORT_CONFIG_FILE=\"apisupport-config.h\"  -I../.. ${IDIRS} ${CPPFLAGS} ${CFLAGS} -c ../../util/warnp.c -o warnp.o
 
 test:	test_aws
 	./test_aws
