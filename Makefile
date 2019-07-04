@@ -26,19 +26,21 @@ TEST_CMD=	tests/test_libcperciva.sh
 
 ### Shared code between Tarsnap projects.
 
-all:	cpusupport-config.h posix-flags.sh
+all:	apisupport-config.h cpusupport-config.h posix-flags.sh
 	export CFLAGS="$${CFLAGS:-${CFLAGS_DEFAULT}}";	\
 	. ./posix-flags.sh;				\
 	. ./cpusupport-config.h;			\
+	. ./apisupport-config.h;			\
 	export HAVE_BUILD_FLAGS=1;			\
 	for D in ${PROGS} ${TESTS}; do			\
 		( cd $${D} && ${MAKE} all ) || exit 2;	\
 	done
 
 # For "loop-back" building of a subdirectory
-buildsubdir: cpusupport-config.h posix-flags.sh
+buildsubdir: apisupport-config.h cpusupport-config.h posix-flags.sh
 	. ./posix-flags.sh;				\
 	. ./cpusupport-config.h;			\
+	. ./apisupport-config.h;			\
 	export HAVE_BUILD_FLAGS=1;			\
 	cd ${BUILD_SUBDIR} && ${MAKE} ${BUILD_TARGET}
 
@@ -52,6 +54,16 @@ posix-flags.sh:
 		printf "export \"CFLAGS_POSIX=";			\
 		command -p sh posix-cflags.sh "$$PATH";			\
 		printf "\"\n";						\
+	else								\
+		:;							\
+	fi > $@
+
+apisupport-config.h:
+	if [ -d ${LIBCPERCIVA_DIR}/apisupport/ ]; then			\
+		export CC="${CC}";					\
+		command -p sh						\
+		    ${LIBCPERCIVA_DIR}/apisupport/Build/apisupport.sh	\
+		    "$$PATH";						\
 	else								\
 		:;							\
 	fi > $@
@@ -73,7 +85,7 @@ install:	all
 	done
 
 clean:
-	rm -f cpusupport-config.h posix-flags.sh
+	rm -f apisupport-config.h cpusupport-config.h posix-flags.sh
 	for D in ${PROGS} ${TESTS}; do				\
 		( cd $${D} && ${MAKE} clean ) || exit 2;	\
 	done

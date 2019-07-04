@@ -25,6 +25,8 @@ SUBDIR_DEPTH=`${MAKEBSD} -V SUBDIR_DEPTH`
 # Set up *-config.h so that we don't have missing headers
 rm -f ${SUBDIR_DEPTH}/cpusupport-config.h
 touch ${SUBDIR_DEPTH}/cpusupport-config.h
+rm -f ${SUBDIR_DEPTH}/apisupport-config.h
+touch ${SUBDIR_DEPTH}/apisupport-config.h
 
 copyvar() {
 	var=$1
@@ -46,10 +48,11 @@ add_makefile_prog() {
 add_object_files() {
 	# Set up useful variables
 	OBJ=$(${MAKEBSD} -V SRCS |				\
+	    sed -e 's| apisupport-config.h||' |			\
 	    sed -e 's| cpusupport-config.h||' |			\
 	    tr ' ' '\n' |					\
 	    sed -E 's/.c$/.o/' )
-	CPP_SUPP="-DCPUSUPPORT_CONFIG_FILE=\"cpusupport-config.h\""
+	CPP_SUPP="-DCPUSUPPORT_CONFIG_FILE=\"cpusupport-config.h\" -DAPISUPPORT_CONFIG_FILE=\"apisupport-config.h\""
 	CPP_ARGS_FIXED="-std=c99 ${CPP_SUPP} -I${SUBDIR_DEPTH} -MM"
 	OUT_CC_BEGIN="\${CC} \${CFLAGS_POSIX} ${CFLAGS_HARDCODED}"
 	OUT_CC_MID="-I${SUBDIR_DEPTH} \${IDIRS} \${CPPFLAGS} \${CFLAGS}"
@@ -81,6 +84,7 @@ copyvar MAN1
 if [ -n "`${MAKEBSD} -V SRCS`" ]; then
 	printf "SRCS=" >> $OUT
 	${MAKEBSD} -V SRCS |				\
+	    sed -e 's| apisupport-config.h||' |		\
 	    sed -e 's| cpusupport-config.h||' >> $OUT
 fi
 copyvar IDIRS
@@ -129,3 +133,4 @@ fi
 
 # Clean up *-config.h files
 rm -f ${SUBDIR_DEPTH}/cpusupport-config.h
+rm -f ${SUBDIR_DEPTH}/apisupport-config.h
