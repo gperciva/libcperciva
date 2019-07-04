@@ -1,5 +1,6 @@
 # These also apply to all subdirectories.
 *.o
+apisupport-config.h
 cpusupport-config.h
 posix-flags.sh
 # Test binaries and compiled files.

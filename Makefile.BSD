@@ -18,8 +18,8 @@ TESTS=	tests/aws							\
 	tests/setuidgid							\
 	tests/sha256							\
 	tests/valgrind
-PUBLISH= ${PROGS} COPYRIGHT STYLE POSIX Makefile aws alg cpusupport	\
-	crypto datastruct events network tests util
+PUBLISH= ${PROGS} COPYRIGHT STYLE POSIX Makefile aws alg apisupport	\
+	cpusupport crypto datastruct events network tests util
 
 ### Shared code between Tarsnap projects.
 
