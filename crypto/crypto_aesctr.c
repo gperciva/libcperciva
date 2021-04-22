@@ -101,6 +101,24 @@ crypto_aesctr_init2(struct crypto_aesctr * stream,
 	 */
 	stream->pblk[15] = 0xff;
 
+#ifdef __clang_analyzer__
+	/**
+	 * This appears to be a known bug in the clang analyzer:
+	 *     "... our memory model fails to confirm that writing a 32-bit
+	 *     integer would initialize all 4 bytes of that integer"
+	 *     https://bugs.llvm.org/show_bug.cgi?id=44114#c1
+	 *
+	 * The work around comes from another comment in that thread by the
+	 * same developer:
+	 *     "The function is completely fake, of course, but nobody will
+	 *     notice that it's fake until link time, and the analyzer will
+	 *     not do linking, so it's fine."
+	 *     https://bugs.llvm.org/show_bug.cgi?id=44114#c3
+	 */
+	for (int i = 0; i < 4; i++)
+		fake_clang_analyzer_initialized(stream->pblk[i]);
+#endif
+
 #ifdef HWACCEL
 	hwaccel_init();
 #endif
