@@ -82,6 +82,24 @@ get_cpusupport_cflags() {
 	done | sed 's/^ //'
 }
 
+get_use_pthread() {
+	src=$1
+
+	# Bail if it's not optional_mutex.c
+	if [ "${src#*optional_mutex.c}" = "$src" ] ; then
+		return
+	fi
+
+	# If it is optional_mutex.c, add the appropriate
+	# OPTIONAL_MUTEX_PTHREAD_* define.
+	ldadd_req=$(${MAKEBSD} -v LDADD_REQ)
+	if [ "${ldadd_req#*-lpthread}" != "$ldadd_req" ] ; then
+		printf "%s" "-DOPTIONAL_MUTEX_PTHREAD_YES"
+	else
+		printf "%s" "-DOPTIONAL_MUTEX_PTHREAD_NO"
+	fi
+}
+
 add_object_files() {
 	# Set up useful variables
 	OBJ=$(${MAKEBSD} -v SRCS |				\
@@ -98,7 +116,9 @@ add_object_files() {
 		S=$(${MAKEBSD} source-${F})
 		CF_MANUAL=$(${MAKEBSD} -v CFLAGS.$(basename ${S}))
 		CF_CPUSUPPORT=$(get_cpusupport_cflags ${S})
-		CF=$(echo "${CF_CPUSUPPORT} ${CF_MANUAL}" |	\
+		CF_USE_PTHREAD=$(get_use_pthread ${S})
+		# Don't put a space between CF_MANUAL and CF_USE_PTHREAD.
+		CF=$(echo "${CF_CPUSUPPORT} ${CF_MANUAL}${CF_USE_PTHREAD}" | \
 		    sed 's/^ //' | sed 's/ $//')
 		IDIRS=$(${MAKEBSD} -v IDIRS)
 		# Get the build instructions, then remove newlines, condense

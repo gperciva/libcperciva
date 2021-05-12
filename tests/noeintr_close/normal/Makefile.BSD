@@ -1,0 +1,34 @@
+# Program name.
+PROG	=	test_noeintr_close_normal
+
+# Don't install it.
+NOINST	=	1
+
+# Useful relative directories
+LIBCPERCIVA_DIR	=	../../..
+NOEINTR_CLOSE_SHARED	=	..
+
+# Main test code
+SRCS	=	main.c
+
+# Shared test code for noeintr_close()
+.PATH.c :	${NOEINTR_CLOSE_SHARED}
+SRCS	+=	open_close.c
+IDIRS	+=	-I${NOEINTR_CLOSE_SHARED}
+
+# libcperciva includes
+IDIRS	+=	-I${LIBCPERCIVA_DIR}/util
+
+# Handle optional_mutex
+.PATH.c	:	${LIBCPERCIVA_DIR}/util
+SRCS	+=	optional_mutex.c
+IDIRS	+=	-I${LIBCPERCIVA_DIR}/util
+
+# Compile this ourselves, for the test-only define
+.PATH.c :	${LIBCPERCIVA_DIR}/util
+SRCS	+=	noeintr_close.c
+
+# Special test-only define
+CFLAGS.noeintr_close.c=	-DNOEINTR_CLOSE_TESTING
+
+.include <bsd.prog.mk>

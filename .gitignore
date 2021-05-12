@@ -28,6 +28,10 @@ tests/json/test_json
 tests/md5/test_md5
 tests/monoclock/test_monoclock
 tests/mpool/test_mpool
+tests/noeintr_close/normal/test_noeintr_close_normal
+tests/noeintr_close/pthread/test_noeintr_close_pthread
+tests/optional_mutex/normal/test_optional_mutex_normal
+tests/optional_mutex/pthread/test_optional_mutex_pthread
 tests/setuidgid/test_setuidgid
 tests/sha1/test_sha1
 tests/sha256/test_sha256
