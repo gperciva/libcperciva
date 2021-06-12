@@ -20,6 +20,8 @@ TESTS=	tests/aws							\
 	tests/md5							\
 	tests/monoclock							\
 	tests/mpool							\
+	tests/optional_mutex/normal					\
+	tests/optional_mutex/pthread					\
 	tests/parsenum							\
 	tests/readpass_file						\
 	tests/setuidgid							\
