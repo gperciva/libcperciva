@@ -21,6 +21,8 @@ TESTS=	tests/aws							\
 	tests/monoclock							\
 	tests/mpool							\
 	tests/parsenum							\
+	tests/noeintr_close/normal					\
+	tests/noeintr_close/pthread					\
 	tests/readpass_file						\
 	tests/setuidgid							\
 	tests/sha1							\

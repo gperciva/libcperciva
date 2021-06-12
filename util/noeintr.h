@@ -11,4 +11,11 @@
  */
 ssize_t noeintr_write(int, const void *, size_t);
 
+/**
+ * noeintr_close(fd):
+ * Close the file descriptor ${fd} per the close(2) system call, but handle
+ * EINTR appropriately.
+ */
+int noeintr_close(int);
+
 #endif /* !_NOEINTR_H_ */
