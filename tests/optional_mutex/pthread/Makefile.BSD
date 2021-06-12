@@ -1,0 +1,28 @@
+# Program name.
+PROG	=	test_optional_mutex_pthread
+
+# Don't install it.
+NOINST	=	1
+
+# Library code required
+LDADD_REQ	=	-lpthread
+
+# Useful relative directories
+LIBCPERCIVA_DIR	=	../../..
+
+# Main test code
+.PATH.c	:	..
+SRCS	=	main.c
+
+# Handle optional_mutex
+.PATH.c	:	${LIBCPERCIVA_DIR}/util
+SRCS	+=	optional_mutex.c
+IDIRS	+=	-I${LIBCPERCIVA_DIR}/util
+
+# Special test-only define.
+CFLAGS.main.c= -DNUM_THREADS=10
+
+test:	all
+	./${PROG}
+
+.include <bsd.prog.mk>
